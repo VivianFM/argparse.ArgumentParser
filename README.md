@@ -59,21 +59,25 @@ Breakdown of the features:
 Run your script with `--help` to get auto-generated usage docs:
 
 ```bash
-python script.py --help
+python example_argparse_usage.py textfile.txt --help
 ```
 
 Output:
 
 ```
-usage: script.py [-h] [-t] [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [--log-to-file]
+usage: teste.py [-h] [-t] [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [--log-to-file] filepath
 
-Compute analytics data.
+Count lines in a text file with optional test mode and logging.
+
+positional arguments:
+  filepath              Path to the .txt file to process.
 
 options:
   -h, --help            show this help message and exit
-  -t, --test            Test mode (does not connect to S3 bucket).
-  --log-level           Set the logging level (default: WARNING).
-  --log-to-file         If set, log messages will be saved to a file instead of printed to the console.
+  -t, --test            Run in test mode (does not read the file).
+  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}
+                        Set the logging level (default: WARNING).
+  --log-to-file         If set, logs will be saved to 'output.log' instead of printed to console.
 ```
 
 ---
