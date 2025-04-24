@@ -1,6 +1,6 @@
 ## `argparse.ArgumentParser` - Quick Guide
 
-If you're writing a Python script that needs command-line arguments, like --log-level, --test, or a file path — argparse is your best friend.
+If you're writing a Python script that needs command-line arguments, like --log-level, --test, or a file path — argparse is an essential tool.
 
 It lets you build intuitive Command-Line Interface (CLI) tools that:
 
@@ -22,7 +22,7 @@ It lets you build intuitive Command-Line Interface (CLI) tools that:
 
 ---
 
-## Example: Argument Parsing with `argparse`
+## Practical example
 
 See [`example_argparse_usage.py`](./example_argparse_usage.py) for a complete example.
 
@@ -49,9 +49,13 @@ Breakdown of the features:
 | `--log-to-file`    | `store_true`        | If passed, logs are written to `logfile.log` instead of the console      |
 | `--help`, `-h`     | Built-in            | Displays the auto-generated usage guide with all arguments and exits     |
 
-> **Note:** Logging levels are hierarchical. `DEBUG` < `INFO` < `WARNING` < `ERROR` < `CRITICAL`.  
+> **Note:**
+> 
+> Logging levels are hierarchical. `DEBUG` < `INFO` < `WARNING` < `ERROR` < `CRITICAL`.
+> 
 > This means setting the log level to `INFO` will include `INFO`, `WARNING`, `ERROR`, and `CRITICAL` messages, but exclude `DEBUG`.
-> --help is a built-in argument automatically added by argparse that displays a usage guide, showing all available arguments, their descriptions, and default values.
+> 
+> `--help` is a built-in argument automatically added by argparse that displays a usage guide, showing all available arguments, their descriptions, and default values.
 
 ---
 
@@ -93,34 +97,35 @@ One of its key components is the function `logging.basicConfig()`, which is used
 
 Purpose:
 
-    Configures log messages (their format, level of importance, etc.).
+ - Configures log messages (their format, level of importance, etc.).
 
-    Determines the output destination (such as a file or the console).
+ - Determines the output destination (such as a file or the console).
 
-    Defines the severity level (e.g., DEBUG, INFO, WARNING).
+ - Defines the severity level (e.g., DEBUG, INFO, WARNING).
 
-Key settings used:
-| Parameter          | Purpose                                                                 |
-|--------------------|-------------------------------------------------------------------------|
-| `filename`         | `filename="logfile.log"` Path to the log file (only set if `--log-to-file` is used)             |
-| `level`            | `level=args.log_level.upper()` Sets the logging severity (e.g., `DEBUG`, `INFO`, `WARNING`, etc.)     |
-| `format`           | `format="%(asctime)s - %(levelname)s - %(message)s"` Specifies the format of each log message                               |
-| `datefmt`          | `datefmt="%Y-%m-%d %H:%M:%S"` Controls how timestamps appear in log messages                         |
+Here’s your table updated with the code in a separate column for clarity:
+
+| Parameter   | Code Example                                      | Purpose                                                                 |
+|-------------|---------------------------------------------------|-------------------------------------------------------------------------|
+| `filename`  | `filename="logfile.log"`                          | Path to the log file (only set if `--log-to-file` is used)              |
+| `level`     | `level=args.log_level.upper()`                    | Sets the logging severity (e.g., `DEBUG`, `INFO`, `WARNING`, etc.)      |
+| `format`    | `format="%(asctime)s - %(levelname)s - %(message)s"` | Specifies the format of each log message                                |
+| `datefmt`   | `datefmt="%Y-%m-%d %H:%M:%S"`                     | Controls how timestamps appear in log messages                          |
 
 Log message format:
 ```text
 2025-04-24 15:45:23 - INFO - Something important happened!
 ```
     
-## set_logger(args) Function
-The `set_logger(args)` wrapps the `logging.basicConfig()` to centralized configuration. conditional logic and simplify the code.
+## `set_logger(args)` Function
+The `set_logger(args)` function wraps `logging.basicConfig()` to **centralize the configuration**, enable **conditional logic**, and **simplify the main code**.
 
    What `set_logger(args)` does:
    - Reads arguments from args (parsed by argparse)
 
-   - Checks if the user passed --log-to-file
+   - Checks if the user passed `--log-to-file`
 
-        - If yes: logs are saved to logfile.log
+        - If yes: logs are saved to `logfile.log`
 
         - If no: logs are printed to the console (stdout)
 
