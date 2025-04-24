@@ -131,3 +131,20 @@ The `set_logger(args)` function wraps `logging.basicConfig()` to **centralize th
 
 
 This makes it easy to control what gets logged and where it goes — all from the command line. Very handy for debugging or monitoring script behavior in real scenarios.
+
+# Summary
+- `argparse.ArgumentParser` is used to handle command-line arguments. It parses user input from the command line (like --test, --verbose, filename.txt, etc.) and turns them into usable variables in your script.
+
+- `logging.basicConfig()` is part of the logging module and is used to configure how your program outputs logs (like errors, info, warnings, etc.).
+
+Sure! Here's your comparison neatly formatted as a table in Markdown:
+
+
+| **Feature**         | **`argparse.ArgumentParser`**                             | **`logging` / `logging.basicConfig()`**                           |   
+|---------------------|------------------------------------------------------------|--------------------------------------------------------------------|
+| **Purpose**         | Parse and capture user input from the CLI                  | Display, store, or manage runtime messages (e.g., errors, info) |    
+| **What it controls**| What the user wants the program to do                      | How the program communicates what it’s doing                    |    
+| **Example usage**   | `--log-level DEBUG`, `input.txt`                           | `logging.basicConfig(level=logging.DEBUG)`, `logging.info("File opened")`, `logging.error("File not found")` |
+| **Output**          | A structured object of arguments (`args`)                  | Text messages in the console or written to a log file            |
+
+
