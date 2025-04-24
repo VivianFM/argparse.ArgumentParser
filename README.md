@@ -24,66 +24,28 @@ It lets you build intuitive Command-Line Interface (CLI) tools that:
 
 ## Example: Argument Parsing with `argparse`
 
-```python
-import argparse
-
-def parse_arguments():
-    """Argument parser."""
-    parser = argparse.ArgumentParser(description="")
-    
-    parser.add_argument(
-        "-t",
-        "--test",
-        action="store_true",
-        help="Test mode (does not connect to S3 bucket).",
-    )
-    
-    parser.add_argument(
-        "--log-level",
-        default="WARNING",
-        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
-        help="Set the logging level (default: WARNING).",
-    )
-    
-    parser.add_argument(
-        "--log-to-file",
-        action="store_true",
-        help="If set, log messages will be saved to a file instead of printed to the console.",
-    )
-
-    return parser.parse_args()
-
-def main():
-    args = parse_arguments()
-    print(args)
-
-if __name__ == "__main__":
-    main()
-```
-
----
-
-## Real-World Examples
+See [`example_argparse_usage.py`](./example_argparse_usage.py) for a complete example.
 
 Run your script like this:
 
 ```bash
-python script.py --test --log-level DEBUG --log-to-file
+python example_argparse_usage.py textfile.txt --test --log-level DEBUG
 ```
 
 And `args` will look like:
 
 ```python
-Namespace(test=True, log_level='DEBUG', log_to_file=True)
+Namespace(filepath='myfile.txt', test=True, log_level='DEBUG', log_to_file=False)
 ```
 
 Breakdown of the features:
 
-| Argument         | Action         | Behavior                                                         |
-|------------------|----------------|------------------------------------------------------------------|
-| `--test`, `-t`   | `store_true`   | Sets `args.test = True` if flag is passed (default is False)     |
-| `--log-level`    | `default`, `choices` | Accepts only specified levels, defaults to `'WARNING'`     |
-| `--log-to-file`  | `store_true`   | Same as `--test`, turns on the flag if passed                    |
+| Argument           | Action              | Behavior                                                                 |
+|--------------------|---------------------|--------------------------------------------------------------------------|
+| `filepath`         | Positional          | Required path to the `.txt` file to be processed                         |
+| `--test`, `-t`     | `store_true`        | Sets `args.test = True` if flag is passed (default is `False`)          |
+| `--log-level`      | `default`, `choices`| Accepts only: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL` (default: `WARNING`) |
+| `--log-to-file`    | `store_true`        | If passed, logs are written to `logfile.log` instead of the console      |
 
 ---
 
