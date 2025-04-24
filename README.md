@@ -55,7 +55,7 @@ Breakdown of the features:
 
 ---
 
-## Bonus Tip
+### Bonus Tip
 
 Run your script with `--help` to get auto-generated usage docs:
 
@@ -83,11 +83,46 @@ options:
 
 ---
 
-## Summary
+# Logging
 
-Use `argparse` + a `parse_arguments()` function when:
-- You want clean CLI parsing
-- You need flexibility (defaults, types, choices, etc.)
-- You value readable, testable, professional-looking code
+## `logging.basicConfig()`: Logging Configuration Explained
 
-This pattern works for everything from quick scripts to full-blown CLI apps. No excuses — parse like a pro. 
+The `logging` module in Python is a powerful built-in library used for tracking events and errors that happen during the execution of your program. 
+
+One of its key components is the function `logging.basicConfig()`, which is used to set up the basic configuration for the logging system. 
+
+Purpose:
+
+    Configures log messages (their format, level of importance, etc.).
+
+    Determines the output destination (such as a file or the console).
+
+    Defines the severity level (e.g., DEBUG, INFO, WARNING).
+
+Key settings used:
+| Parameter          | Purpose                                                                 |
+|--------------------|-------------------------------------------------------------------------|
+| `filename`         | `filename="logfile.log"` Path to the log file (only set if `--log-to-file` is used)             |
+| `level`            | `level=args.log_level.upper()` Sets the logging severity (e.g., `DEBUG`, `INFO`, `WARNING`, etc.)     |
+| `format`           | `format="%(asctime)s - %(levelname)s - %(message)s"` Specifies the format of each log message                               |
+| `datefmt`          | `datefmt="%Y-%m-%d %H:%M:%S"` Controls how timestamps appear in log messages                         |
+
+Log message format:
+```text
+2025-04-24 15:45:23 - INFO - Something important happened!
+```
+    
+## set_logger(args) Function
+The `set_logger(args)` wrapps the `logging.basicConfig()` to centralized configuration. conditional logic and simplify the code.
+
+   What `set_logger(args)` does:
+   - Reads arguments from args (parsed by argparse)
+
+   - Checks if the user passed --log-to-file
+
+        - If yes: logs are saved to logfile.log
+
+        - If no: logs are printed to the console (stdout)
+
+
+This makes it easy to control what gets logged and where it goes — all from the command line. Very handy for debugging or monitoring script behavior in real scenarios.
