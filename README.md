@@ -1,12 +1,16 @@
 ## `argparse.ArgumentParser` - Quick Guide
 
-If you're writing a Python script that needs command-line arguments — flags like `--verbose`, `--config path`, or `--test-mode` — `argparse` is your best friend.
+If you're writing a Python script that needs command-line arguments — like --log-level, --test, or a file path — argparse is your best friend.
 
-It lets you build intuitive CLI tools that:
-- Handle arguments (both required and optional)
-- Validate input types and values
-- Generate help messages automatically
-- Provide default values
+It lets you build intuitive Command-Line Interface (CLI) tools that:
+
+   - Handle arguments (both required, like the filepath, and optional, like --test or --log-to-file)
+
+   - Validate input types and values (e.g., ensuring the --log-level is one of DEBUG, INFO, WARNING, ERROR, or CRITICAL)
+
+   - Automatically generate help messages with the --help flag
+
+   - Provide default values (like --log-level defaulting to WARNING)
 
 ---
 
