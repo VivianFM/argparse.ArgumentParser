@@ -1,6 +1,6 @@
 ## `argparse.ArgumentParser` - Quick Guide
 
-If you're writing a Python script that needs command-line arguments — like --log-level, --test, or a file path — argparse is your best friend.
+If you're writing a Python script that needs command-line arguments, like --log-level, --test, or a file path — argparse is your best friend.
 
 It lets you build intuitive Command-Line Interface (CLI) tools that:
 
@@ -46,9 +46,11 @@ Breakdown of the features:
 | `--test`, `-t`     | `store_true`        | Sets `args.test = True` if flag is passed (default is `False`)          |
 | `--log-level`      | `default`, `choices`| Accepts only: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL` (default: `WARNING`) |
 | `--log-to-file`    | `store_true`        | If passed, logs are written to `logfile.log` instead of the console      |
+| `--help`, `-h`     | Built-in            | Displays the auto-generated usage guide with all arguments and exits     |
 
 > **Note:** Logging levels are hierarchical. `DEBUG` < `INFO` < `WARNING` < `ERROR` < `CRITICAL`.  
 > This means setting the log level to `INFO` will include `INFO`, `WARNING`, `ERROR`, and `CRITICAL` messages, but exclude `DEBUG`.
+> --help is a built-in argument automatically added by argparse that displays a usage guide, showing all available arguments, their descriptions, and default values.
 
 ---
 
