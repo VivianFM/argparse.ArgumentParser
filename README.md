@@ -29,13 +29,14 @@ See [`example_argparse_usage.py`](./example_argparse_usage.py) for a complete ex
 Run your script like this:
 
 ```bash
-python example_argparse_usage.py textfile.txt --test --log-level DEBUG
+python example_argparse_usage.py textfile.txt --test --log-level INFO --log-to-file
+
 ```
 
 And `args` will look like:
 
 ```python
-Namespace(filepath='textfile.txt', test=True, log_level='DEBUG', log_to_file=False)
+Namespace(filepath='textfile.txt', test=True, log_level='DEBUG', log_to_file=True)
 ```
 
 Breakdown of the features:
