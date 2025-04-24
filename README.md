@@ -16,9 +16,9 @@ It lets you build intuitive Command-Line Interface (CLI) tools that:
 
 ## Why Use a `parse_arguments()` Function?
 
-Short answer: **cleaner, reusable, testable code**.
+- **cleaner, reusable, testable code**.
 
-Long answer: Wrapping your argument parser inside a function (like `parse_arguments()`) keeps things organized, avoids cluttering your `main()` logic, and makes your script easier to scale, maintain, and test.
+- Wrapping your argument parser inside a function (like `parse_arguments()`) keeps things organized, avoids cluttering your `main()` logic, and makes your script easier to scale, maintain, and test.
 
 ---
 
