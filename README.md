@@ -35,7 +35,7 @@ python example_argparse_usage.py textfile.txt --test --log-level DEBUG
 And `args` will look like:
 
 ```python
-Namespace(filepath='myfile.txt', test=True, log_level='DEBUG', log_to_file=False)
+Namespace(filepath='textfile.txt', test=True, log_level='DEBUG', log_to_file=False)
 ```
 
 Breakdown of the features:
@@ -46,6 +46,9 @@ Breakdown of the features:
 | `--test`, `-t`     | `store_true`        | Sets `args.test = True` if flag is passed (default is `False`)          |
 | `--log-level`      | `default`, `choices`| Accepts only: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL` (default: `WARNING`) |
 | `--log-to-file`    | `store_true`        | If passed, logs are written to `logfile.log` instead of the console      |
+
+> **Note:** Logging levels are hierarchical. `DEBUG` < `INFO` < `WARNING` < `ERROR` < `CRITICAL`.  
+> This means setting the log level to `INFO` will include `INFO`, `WARNING`, `ERROR`, and `CRITICAL` messages, but exclude `DEBUG`.
 
 ---
 
