@@ -33,14 +33,22 @@ def parse_arguments():
 
     return parser.parse_args()
 
-def configure_logging(log_level, to_file):
-    """Set up logging configuration based on CLI args."""
-    handlers = [logging.FileHandler("output.log")] if to_file else [logging.StreamHandler(sys.stdout)]
-    logging.basicConfig(
-        level=getattr(logging, log_level),
-        format="%(asctime)s - %(levelname)s - %(message)s",
-        handlers=handlers
-    )
+def set_logger(args) -> None:
+    """Configure logging based on parsed arguments."""
+    if args.log_to_file:
+        logging.basicConfig(
+            filename="logfile.log",
+            level=args.log_level.upper(),
+            format="%(asctime)s - %(levelname)s - %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
+        )
+    else:
+        logging.basicConfig(
+            level=args.log_level.upper(),
+            format="%(asctime)s - %(levelname)s - %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
+        )
+
 
 def count_lines_in_file(filepath, test_mode=False):
     """Counts the number of lines in a given file."""
@@ -57,11 +65,11 @@ def count_lines_in_file(filepath, test_mode=False):
         line_count = len(lines)
         logging.info(f"Processed file: {filepath}")
         logging.info(f"Total lines: {line_count}")
-        print(f"✅ {filepath} has {line_count} lines.")
+        print(f" {filepath} has {line_count} lines.")
 
 def main():
     args = parse_arguments()
-    configure_logging(args.log_level, args.log_to_file)
+    set_logger(args)
     count_lines_in_file(args.filepath, test_mode=args.test)
 
 if __name__ == "__main__":
