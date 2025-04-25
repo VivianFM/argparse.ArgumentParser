@@ -152,5 +152,5 @@ Sure! Here's your comparison neatly formatted as a table in Markdown:
 ## References
 
 - [Official Python `argparse` Documentation](https://docs.python.org/3/library/argparse.html)
-- - [Official Python `logging` Documentation](https://docs.python.org/3/library/logging.html)
+- [Official Python `logging` Documentation](https://docs.python.org/3/library/logging.html)
 
