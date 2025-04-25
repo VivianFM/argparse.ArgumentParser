@@ -147,4 +147,9 @@ Sure! Here's your comparison neatly formatted as a table in Markdown:
 | **Example usage**   | `--log-level DEBUG`, `input.txt`                           | `logging.basicConfig(level=logging.DEBUG)`, `logging.info("File opened")`, `logging.error("File not found")` |
 | **Output**          | A structured object of arguments (`args`)                  | Text messages in the console or written to a log file            |
 
+---
+
+## References
+
+- [Official Python `pdb` Documentation](https://docs.python.org/3/library/argparse.html)
 
